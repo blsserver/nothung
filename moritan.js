@@ -1,38 +1,3 @@
-// ==UserScript==
-// @name        سكريبت موريتانيا
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  تحديد القيمة المختارة من عنصر select وتنفيذ دالة JavaScript بناءً على القيمة المحددة
-// @author       You
-// @match        https://mr.blsspainvisa.com/*
-// @grant        none
-// ==/UserScript==
-
-(function() {
-    'use strict';
-
-    // دالة لتحقيق النقر التلقائي
-    function simulateClickOnElement(elementSelector) {
-        const element = document.querySelector(elementSelector);
-        if (element) {
-            element.click();
-            console.log('Click simulated successfully.');
-        } else {
-            console.error('Element not found.');
-        }
-    }
-
-    // تنفيذ النقر التلقائي عند تحميل الصفحة
-    function main() {
-        const elementSelectorToClick = '.popupCloseIcon'; // تعديل هنا بمحدد العنصر الذي تريد النقر عليه
-        simulateClickOnElement(elementSelectorToClick);
-    }
-
-    main();
-})();
-
-///////////////////////////////////////////
-//////////////////////////////////////////
 
 // ==UserScript==
 // @name         Auto Select Category
@@ -70,6 +35,46 @@
         }
     });
 })();
+
+///////////////////////////////////////////
+//////////////////////////////////////////
+
+// ==UserScript==
+// @name        سكريبت موريتانيا
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  تحديد القيمة المختارة من عنصر select وتنفيذ دالة JavaScript بناءً على القيمة المحددة
+// @author       You
+// @match        https://mr.blsspainvisa.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // دالة لتحقيق النقر التلقائي
+    function simulateClickOnElement(elementSelector) {
+        const element = document.querySelector(elementSelector);
+        if (element) {
+            element.click();
+            console.log('Click simulated successfully.');
+        } else {
+            console.error('Element not found.');
+        }
+    }
+
+    // تنفيذ النقر التلقائي عند تحميل الصفحة
+    function main() {
+        const elementSelectorToClick = '.popupCloseIcon'; // تعديل هنا بمحدد العنصر الذي تريد النقر عليه
+        simulateClickOnElement(elementSelectorToClick);
+    }
+
+    main();
+})();
+
+
+
+
 
 
 //////////////////////////////////////////////////////////////////////
