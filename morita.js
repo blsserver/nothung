@@ -169,7 +169,7 @@
         var datedexpirationField = document.querySelector('#pptExpiryDate');
         var lieudepasseportField = document.querySelector('#pptIssuePalace');
 
-        // Replace these values with the data you want to fill
+        // تغيير المعلومات التي تريد ادخالها غير فقط الدي بين شلطتين فقط
         var email = 'ahmedltassoust4@gmail.com';
         var phone = '55664455';
         var first_name = 'ahmed';    //First Name
