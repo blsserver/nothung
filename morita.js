@@ -1,6 +1,5 @@
-
 // ==UserScript==
-// @name         Auto Select Category
+// @name        سكريبت موريتانيا
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  Automatically selects "Normal" category on page load
@@ -8,6 +7,7 @@
 // @match         https://mr.blsspainvisa.com/*
 // @grant        none
 // ==/UserScript==
+
 (function() {
     'use strict';
 
@@ -65,9 +65,8 @@
         }, 2000); // ثانيتان (2000 مللي ثانية)
     });
 })();
-
-///////////////////////////////////////////
-//////////////////////////////////////////
+////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
 
 // ==UserScript==
 // @name        سكريبت موريتانيا
@@ -102,40 +101,6 @@
     main();
 })();
 
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-// ==UserScript==
-// @name         Auto Select Category
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  Automatically selects "Normal" category on page load
-// @author       Your name
-// @match         https://mr.blsspainvisa.com/*
-// @grant        none
-// ==/UserScript==
-
-(function() {
-    'use strict';
-
-    window.addEventListener('load', function() {
-        // تأخير التنفيذ لمدة ثانيتين (2000 مللي ثانية)
-        setTimeout(function() {
-            // ابحث عن عنصر القائمة المنسدلة باستخدام معرف العنصر
-            var categorySelect = document.getElementById('category');
-
-            // تأكد من وجود العنصر
-            if (categorySelect) {
-                // قم بتعيين القيمة إلى "Normal"
-                categorySelect.value = 'Normal';
-            }
-        }, 2000); // ثانيتان (2000 مللي ثانية)
-    });
-})();
 ///////////////////////////////////////////                              /////////////////////////////////////////////
 ///////////////////////////////////////////        تخطي الصفحة الثانية         /////////////////////////////////////////////
 ///////////////////////////////////////////                              /////////////////////////////////////////////
@@ -265,15 +230,83 @@
     // Call the function to open popup windows when the page loads
     window.addEventListener('load', openPopupWindows);
 })();
-///////////////////////////////////////////////////                                  ///////////////////////////////////////////
-//////////////////////////////////////////////////             اختيار وقت الموعد          ///////////////////////////////////////////
-//////////////////////////////////////////////////                                   //////////////////////////////////////////
 
+
+///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 // ==UserScript==
-// @name         Auto Fill Date Field
+// @name         Auto Select Visa Type
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  Auto fills the date field with YYYY-MM-DD format.
+// @description  Automatically selects "Short Term Visa" in the dropdown menu after page load
+// @author       Your name
+// @match        https://mr.blsspainvisa.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    window.addEventListener('load', function() {
+        // ابحث عن عنصر القائمة المنسدلة باستخدام اسم العنصر
+        var visaTypeSelect = document.getElementById('VisaTypeId');
+
+        // تأكد من وجود العنصر
+        if (visaTypeSelect) {
+            // قم بتعيين القيمة إلى "206" التي تمثل "Short Term Visa"
+            visaTypeSelect.value = '206';
+        }
+    });
+})();
+
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+// ==UserScript==
+// @name         Auto Check Checkbox
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Automatically checks the checkbox after page load
+// @author       Your name
+// @match        https://mr.blsspainvisa.com/appointment.php
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    window.addEventListener('load', function() {
+        // ابحث عن عنصر خانة الاختيار باستخدام معرف العنصر
+        var courierCheckbox = document.getElementById('courierId');
+
+        // تأكد من وجود العنصر
+        if (courierCheckbox) {
+            // قم بتحديد خانة الاختيار
+            courierCheckbox.checked = true;
+        }
+
+        // ابحث عن عنصر خانة الاختيار الثاني باستخدام معرف العنصر
+        var vasCheckbox = document.getElementById('vasId12');
+
+        // تأكد من وجود العنصر
+        if (vasCheckbox) {
+            // قم بتحديد خانة الاختيار
+            vasCheckbox.checked = true;
+        }
+    });
+})();
+
+///////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+
+// ==UserScript==
+// @name         Click Dropdown After Text Change
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Clicks on dropdown after text field changes
 // @author       You
 // @match        https://mr.blsspainvisa.com/*
 // @grant        none
@@ -282,12 +315,44 @@
 (function() {
     'use strict';
 
-    // تحديد التاريخ المطلوب
-    var desiredDate = "2024-03-20"; // يمكنك تغيير هذا التاريخ حسب الحاجة
+    // Function to open dropdown
+    function openDropdown() {
+        var dropdown = document.getElementById('app_date'); // استبدل app_date بمعرف الحقل النصي
+        if (dropdown) {
+            setTimeout(function() {
+                dropdown.focus(); // الانتقال إلى الحقل النصي
+                dropdown.click(); // فتح المنسدلة
+            }, 4000); // تأخير 1 ثانية
+        }
+    }
 
-    // إعادة تعيين قيمة حقل التاريخ إلى التاريخ المطلوب
-    document.getElementById("app_date").value = desiredDate;
+    // Call openDropdown function when the page loads
+    window.addEventListener('load', function() {
+        openDropdown();
+    });
 })();
 
+/////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+// ==UserScript==
+// @name         Refresh Page Every Minute
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Refreshes the page automatically every minute
+// @author       You
+// @match        https://mr.blsspainvisa.com/appointment.php
+// @grant        none
+// ==/UserScript==
 
+(function() {
+    'use strict';
 
+    // Function to refresh the page
+    function refreshPage() {
+        location.reload(); // إعادة تحميل الصفحة
+    }
+
+    // Call refreshPage function every minute (60 seconds)
+    setInterval(refreshPage, 60000); // 60000 milliseconds = 60 seconds
+})();
