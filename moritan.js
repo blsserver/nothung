@@ -31,6 +31,76 @@
     main();
 })();
 
+///////////////////////////////////////////
+//////////////////////////////////////////
+
+// ==UserScript==
+// @name         Auto Select Category
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Automatically selects "Normal" category on page load
+// @author       Your name
+// @match         https://mr.blsspainvisa.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    window.addEventListener('load', function() {
+        // ابحث عن عنصر القائمة المنسدلة للمركز باستخدام معرف العنصر
+        var centreSelect = document.getElementById('centre');
+
+        // تأكد من وجود العنصر
+        if (centreSelect) {
+            // قم بتعيين القيمة إلى "37#37" (مقابل Nouakchott)
+            centreSelect.value = '37#37';
+
+            // فتح القائمة المنسدلة
+            centreSelect.dispatchEvent(new Event('change'));
+        }
+
+        // ابحث عن عنصر القائمة المنسدلة للفئة باستخدام معرف العنصر
+        var categorySelect = document.getElementById('category');
+
+        // تأكد من وجود العنصر
+        if (categorySelect) {
+            // قم بتعيين القيمة إلى "Normal"
+            categorySelect.value = 'Normal';
+        }
+    });
+})();
+
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+// ==UserScript==
+// @name         Auto Select Category
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Automatically selects "Normal" category on page load
+// @author       Your name
+// @match         https://mr.blsspainvisa.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    window.addEventListener('load', function() {
+        // تأخير التنفيذ لمدة ثانيتين (2000 مللي ثانية)
+        setTimeout(function() {
+            // ابحث عن عنصر القائمة المنسدلة باستخدام معرف العنصر
+            var categorySelect = document.getElementById('category');
+
+            // تأكد من وجود العنصر
+            if (categorySelect) {
+                // قم بتعيين القيمة إلى "Normal"
+                categorySelect.value = 'Normal';
+            }
+        }, 2000); // ثانيتان (2000 مللي ثانية)
+    });
+})();
 ///////////////////////////////////////////                              /////////////////////////////////////////////
 ///////////////////////////////////////////        تخطي الصفحة الثانية         /////////////////////////////////////////////
 ///////////////////////////////////////////                              /////////////////////////////////////////////
