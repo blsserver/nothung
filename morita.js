@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Automatically selects "Normal" category on page load
 // @author       Your name
-// @match         https://mr.blsspainvisa.com/*
+// @match         https://*.blsspainvisa.com/*
 // @grant        none
 // ==/UserScript==
 
@@ -175,7 +175,7 @@
         var lieudepasseportField = document.querySelector('#pptIssuePalace');
 
         // تغيير المعلومات التي تريد ادخالها غير فقط الدي بين شلطتين فقط
-        var email = 'ahmedltassoust4@gmail.com';
+        var email = 'workw2141@gmail.com';
         var phone = '55664455';
         var first_name = 'ahmed';    //First Name
         var last_name = 'Doe'; //Last Name
@@ -445,11 +445,21 @@
                     if (options[i].value !== '' && !options[i].disabled) {
                         // اختيار الوقت المتاح
                         options[i].selected = true;
+                        // تشغيل الصوت
+                        playNotificationSound();
                         break;
                     }
                 }
-            }, 5000); // تأخير 7 ثواني
+            }, 7000); // تأخير 7 ثواني
         }
+    }
+
+    // Function to play notification sound
+    function playNotificationSound() {
+        // إنشاء عنصر Audio
+        var audio = new Audio('https://www.soundjay.com/buttons/beep-14.mp3');
+        // تشغيل الصوت
+        audio.play();
     }
 
     // Call selectAvailableTime function when the page loads
@@ -457,4 +467,3 @@
         selectAvailableTime();
     });
 })();
-
