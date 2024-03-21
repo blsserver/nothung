@@ -323,7 +323,7 @@
     // Function to open dropdown
     function openDropdown() {
         var dropdown = document.getElementById('app_date'); // استبدل app_date بمعرف الحقل النصي
-        if (dropdown) {
+        if (dropdown && dropdown.value === '') {
             setTimeout(function() {
                 dropdown.focus(); // الانتقال إلى الحقل النصي
                 dropdown.click(); // فتح المنسدلة
@@ -334,9 +334,16 @@
     // Call openDropdown function when the page loads
     window.addEventListener('load', function() {
         openDropdown();
+
+        // انتظر 2 ثانية بعد فتح المنسدلة ثم انقر على الخيار المطلوب
+        setTimeout(function() {
+            var nextOption = document.querySelector('.next');
+            if (nextOption) {
+                nextOption.click();
+            }
+        }, 2000); // تأخير 2 ثانية
     });
 })();
-
 /////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
@@ -361,3 +368,93 @@
     // Call refreshPage function every minute (60 seconds)
     setInterval(refreshPage, 60000); // 60000 milliseconds = 60 seconds
 })();
+
+///////////////////////////////////////////////////
+///////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+// ==UserScript==
+// @name         حجز التاريخ
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Opens the disabled table cell automatically on page load
+// @author       You
+// @match        https://oman.blsspainvisa.com/appointment.php
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // انتظر 2 ثانية بعد تحميل الصفحة قبل البدء في البحث عن يوم متاح للحجز
+    setTimeout(function() {
+        // ابحث في الجدول الأول
+        var availableDays = document.querySelectorAll('.day.activeClass[title="Book"]');
+        if (availableDays.length > 0) {
+            availableDays[0].click(); // نقر تلقائي
+        } else {
+            // ابحث في الجدول الثاني
+            var secondTableAvailableDays = document.querySelectorAll('.day.activeClass[title="Book"]');
+            if (secondTableAvailableDays.length > 0) {
+                secondTableAvailableDays[0].click(); // نقر تلقائي
+            } else {
+                // انتقل للجدول التالي
+                var nextTableButton = document.querySelector('.next');
+                if (nextTableButton) {
+                    nextTableButton.click(); // نقر تلقائي
+
+                    // اعادة اختيار الحجز في الجدول التالي بعد النقر على الزر "»"
+                    setTimeout(function() {
+                        var nextTableAvailableDays = document.querySelectorAll('.day.activeClass[title="Book"]');
+                        if (nextTableAvailableDays.length > 0) {
+                            nextTableAvailableDays[0].click(); // نقر تلقائي
+                        }
+                    }, 1000); // انتظر 1 ثانية بعد النقر على الزر "»"
+                }
+            }
+        }
+    }, 6000); // انتظر 2 ثانية
+})();
+
+///////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+// ==UserScript==
+// @name         حجز الورقت
+// @namespace    http://tampermonkey.net/
+// @version      2024-03-21
+// @description  try to take over the world!
+// @author       You
+// @match        https://oman.blsspainvisa.com/appointment.php
+// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // Function to select available time
+    function selectAvailableTime() {
+        var timeDropdown = document.getElementById('app_time'); // استبدل app_time بمعرف القائمة المنسدلة
+        if (timeDropdown) {
+            // انتظر 7 ثواني قبل البدء في البحث عن وقت متاح
+            setTimeout(function() {
+                // احصل على جميع الخيارات في القائمة المنسدلة
+                var options = timeDropdown.options;
+                // تحديد أول وقت متاح إذا وجد
+                for (var i = 0; i < options.length; i++) {
+                    if (options[i].value !== '' && !options[i].disabled) {
+                        // اختيار الوقت المتاح
+                        options[i].selected = true;
+                        break;
+                    }
+                }
+            }, 5000); // تأخير 7 ثواني
+        }
+    }
+
+    // Call selectAvailableTime function when the page loads
+    window.addEventListener('load', function() {
+        selectAvailableTime();
+    });
+})();
+
