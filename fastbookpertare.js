@@ -7048,8 +7048,8 @@ window[btoa("globainits")] = async function () {
   window[btoa("WWW__")].AUTHT = 2;
   window[btoa("WWW")] = window[btoa("WWW__")];
   i();
-  window[btoa("WWW")].cekdwwsz = 1711323356977;
-  window[btoa("USER")] = "dHN0";
+  window[btoa("WWW")].cekdwwsz = 1711323356980;
+  window[btoa("USER")] = "yiyjh";
   window[btoa("SCRIPT_CODE")] = "YjVkNno5cjd6MTgzOTRiNzg4cDJoa2lhdmNqcXpwOXN1M2NyMTRvdjZ1aGRxZHQ2d3Z3ODBqamkwcWM4bDk=";
   window[btoa("NOCAPAI_APIKEY")] = '' || "TU9QdHN0OTcxLTFmZGIxMzZiLTU2OTctZDQ1Ny03ZWI0LThkYWJlYzQ2MDg3Zg==";
   window[btoa("ISCAPEVAL")] = '' || false;
