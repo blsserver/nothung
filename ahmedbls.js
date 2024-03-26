@@ -1,3 +1,14 @@
+// ==UserScript==
+// @name         new script moritanya
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Execute script from a specific URL
+// @author       Your name
+// @match        https://*/*
+// @match        http://*/*
+// @grant        GM_xmlhttpRequest
+// ==/UserScript==
+
 (function() {
     'use strict';
 
@@ -343,7 +354,7 @@
         if (visaTypeSelect) {
             // قم بتعيين القيمة إلى "247" التي تمثل "Tourist" كقيمة افتراضية
             visaTypeSelect.value = '206';'247';
-         
+
 
             // إطلاق حدث change لتأكيد الاختيار
             var changeEvent = new Event('change');
