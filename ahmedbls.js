@@ -358,7 +358,7 @@
     paragraph.textContent = '** version-1  ** ابو عبد الله';
 
     // تطبيق الأنماط CSS لتغيير لون وحجم النص ووضعه في المنتصف
-    paragraph.style.color = 'orange';
+    paragraph.style.color = 'red';
     paragraph.style.fontSize = '30px';
     paragraph.style.position = 'fixed';
     paragraph.style.top = '30%';
