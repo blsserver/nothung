@@ -230,13 +230,43 @@
 (function() {
     'use strict';
 
-    // Function to refresh the page
+    var reloadInterval = 60000; // 60 seconds
+
     function refreshPage() {
-        location.reload(); // إعادة تحميل الصفحة
+        location.reload();
     }
 
-    // Call refreshPage function every minute (60 seconds)
-    setInterval(refreshPage, 60000); // 60000 milliseconds = 60 seconds
+    function updateTimerDisplay(timeRemaining) {
+        var countdownElement = document.getElementById('countdown');
+        if (!countdownElement) {
+            countdownElement = document.createElement('div');
+            countdownElement.id = 'countdown';
+            countdownElement.style.top = '20%';
+            countdownElement.style.left = '0%';
+            countdownElement.style.transform = 'translateX(50%)';
+            countdownElement.style.position = 'fixed';
+            countdownElement.style.color = 'green';
+            countdownElement.style.textAlign = 'center';
+            countdownElement.style.fontSize = '24px';
+            document.body.appendChild(countdownElement);
+        }
+        countdownElement.textContent = 'Page will refresh in: ' + Math.ceil(timeRemaining / 1000) + ' seconds';
+    }
+
+    function updateCountdown() {
+        var timeLeft = reloadInterval - ((Date.now() - lastReloadTime) % reloadInterval);
+        updateTimerDisplay(timeLeft);
+    }
+
+    function reloadWithTimer() {
+        refreshPage();
+        updateCountdown();
+    }
+
+    setInterval(updateCountdown, 1000);
+
+    var lastReloadTime = Date.now();
+    setInterval(reloadWithTimer, reloadInterval);
 })();
 
 
